@@ -1,0 +1,8 @@
+# Settings
+WIDTH = 992
+HEIGHT = 558
+FPS = 60
+WEISS = (255, 255, 255)
+SCHWARZ = (0, 0, 0)
+BLAU = (0, 0, 255)
+ROT = (255, 0, 0)
