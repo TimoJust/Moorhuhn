@@ -1,0 +1,93 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text>Observer Pattern
+</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>210</y><w>220</w><h>190</h></coordinates><panel_attributes>Achievment()
+--
+-spielerName
+-punkte
+-achiementText
+--
+textausgeben()
+punkteausgeben()
+
+
+--
+"Speichert Namen und Punkte 
+der Spieler."
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>210</y><w>340</w><h>210</h></coordinates><panel_attributes>IObserver()
+--
+--
++update()
+
+
+
+
+--
+
+"Definiert das es eine Methode 
+update() geben muss."
+
+Übergibt die methode update() an die Klasse Achivment.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>210</y><w>250</w><h>240</h></coordinates><panel_attributes>Datenbank()
+"Subject"
+--
+#listeDerSpieler = []
+
+--
++register(IObserver)
++unregister(IObserver)
++notify(Achievment)
+
+--
+"Elternkalsse Vererbt die Methoden"
+
+"Die Klasse Datenbank sogrt 
+für die Registrierung / Löschung 
+und Benachrichtigung der Observer."</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>480</y><w>330</w><h>210</h></coordinates><panel_attributes>AchievmentDatenbank(Datenbank)
+"Concrete Subjekt"
+--
++erzieltesAchievment()
++addSpieler()
++treffer()
+
+--
+"Kindklasse erbt alle Methoden 
+der Elternklasse."
+
+"Die Klasse Achivmentdatenbak legt ein 
+Dictionary  mit Spieler und Punktestand an.
+Zudem enthält die Klasse verschiedene Achivments, 
+die ausgegeben werden können." </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>490</y><w>240</w><h>210</h></coordinates><panel_attributes>Display(IObserver)
+"ConcreteObserverB"
+--
+
++update()
+
+--
+
+"Setzt bzw. implementiert die Methode 
+update() von von IObserver individuell um."
+
+"Sie dient der Übergabe von Punkten und 
+Achivments an das Display vom Spiel."</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>490</y><w>260</w><h>210</h></coordinates><panel_attributes>AktuellerSpieler(IObserver)
+"ConcreteObserverA"
+--
+
++update()
+
+--
+
+"Setzt bzw. implementiert die Methode 
+update() von IObserver individuell um."
+
+"Dient dazu den Observer also aktuellen 
+Spieler darüber zu informieren das ein neuen 
+Spielerein Achivment erreicht hat."</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>960</x><y>780</y><w>180</w><h>70</h></coordinates><panel_attributes>Observer Pattern:
+vgl. Skript:
+WINF_Krauss_ProgII_02.pdf
+Slide 88
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>410</y><w>110</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;90;30;10;30;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>410</y><w>140</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;30;120;30;120;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>780</y><w>210</w><h>70</h></coordinates><panel_attributes>Client
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>440</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>250</y><w>190</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+&lt;&lt;Aggregation&gt;</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>390</y><w>540</w><h>440</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;420;520;420</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>680</y><w>330</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40;310;40;310;100</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>690</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>690</y><w>220</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;10;200;30;10;30;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>280</y><w>140</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Aufruf&gt;&gt;</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>280</y><w>190</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Aufruf&gt;&gt;</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>240</y><w>140</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+&lt;&lt;Aggregation&gt;</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>0</x><y>80</y><w>140</w><h>70</h></coordinates><panel_attributes>Observer - Pattern 
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>
