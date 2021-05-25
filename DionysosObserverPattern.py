@@ -4,8 +4,8 @@ von Achivments und Punkten.
 Autor: Sven Radzabov
 """
 # xxx Nur zum Testen der Ausgabe auskommentieren xxx
-import ctypes  
-from pygame.constants import JOYAXISMOTION
+# import ctypes  
+# from pygame.constants import JOYAXISMOTION
 
 """ Die Klasse Achivment() speichert die Namen und Punkte der Spieler """
 
@@ -43,7 +43,7 @@ class Display(IObserver):
         print("Display Punkteanzahl =", self._pukteAnzeige)
         displayText = "Der Spieler hat " + str(self._pukteAnzeige) + "Punkte."
         # Nur zum Testen auskommentieren 
-        ctypes.windll.user32.MessageBoxW(0, displayText , "Meine Punkte-Anzeige", 1)
+        # ctypes.windll.user32.MessageBoxW(0, displayText , "Meine Punkte-Anzeige", 1)
 
 
 """ Klasse AktuellerSpieler(IObserver) dient dazu den Observer 
@@ -139,6 +139,8 @@ Nachfolgend angelegte Spieler und  Registrierte Spieler zum Testen
 Beim Mergen auskommentieren.
 
 """
+"""
+
 achchivmentdatenbank = AchievmentDatenbank()
 
 spielerSven = AktuellerSpieler("Sven")
@@ -152,5 +154,4 @@ achchivmentdatenbank.register(myDisplay)
 
 achchivmentdatenbank.treffer(spielerSven.name, "Bier", 51)
        
-    # TEST TEST
-    # Zweiter Test dev 
+"""
