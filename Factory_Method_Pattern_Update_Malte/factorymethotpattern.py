@@ -281,6 +281,7 @@ while running:
 
 
     #Prüfen auf Kollision 
+    #Test Kommentar GitHub
     if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
         for sprite in sprite_list:
          if sprite.getraenk_rect.collidepoint(event.pos):  #event.pos = Maus Position beim klick
