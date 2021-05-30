@@ -104,14 +104,17 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     while True:
                         penny.hintergrund_anzeigen()
                         programm_schließen.button_ausführen()
+                        #hier für Maurice falls ich state nicht hinbekomme
                 if event.type == MOUSEBUTTONDOWN and button_level_2.collidepoint(x, y):
                     while True:
                         bahnhof.hintergrund_anzeigen()
                         programm_schließen.button_ausführen()
+                        #hier für Maurice falls ich state nicht hinbekomme
                 if event.type == MOUSEBUTTONDOWN and button_level_3.collidepoint(x, y):
                     while True:
                         kneipe.hintergrund_anzeigen()
                         programm_schließen.button_ausführen()
+                        #hier für Maurice falls ich state nicht hinbekomme
 
 class Spielstufe:
     def __init__(self, sla: ISpielstufe_Behavior):
@@ -124,7 +127,8 @@ spielstufe_Namenseingabe = Spielstufe(Spielstufe_Namenseingabe)
 spielstufe_Heldenauswahl = Spielstufe(Spielstufe_Heldenauswahl)
 spielstufe_Levelauswahl = Spielstufe(Spielstufe_Levelauswahl)
 spielstufe_Übergabe_Spiellogik = Spielstufe(Spielstufe_Startbildschirm)
-spielstufe_Startbildschirm.spielstufe_ausführen()
+#Hier kann Spiel aufgerufen werden wenn Raute entfernt bei #spielstufe_Startbildschirm.spielstufe_ausführen() zum testen
+#spielstufe_Startbildschirm.spielstufe_ausführen()
 #spielstufe_Namenseingabe.spielstufe_ausführen()
 #spielstufe_Heldenauswahl.spielstufe_ausführen()
 #spielstufe_Levelauswahl.spielstufe_ausführen()
