@@ -1,8 +1,9 @@
-#Autor: Timo Just
-#Strategy Pattern erstellt um die einzelnen Spielstufen/Ebenen zu erstellen, hier derzeit Startbildschirm,Namenseingabe, Heldenauswahl, Levelauswahl... geplant war, diese in das State Pattern zu übergeben. Leider gescheitert :(
-#Dieses Pattern erstellt je nach Spielstufe das Verhalten, was passiert wenn auf Button X,Y gedrückt wird, inklusive Übergabe in die nächste Stufe. 
-#Es können beliebig die Reihenfolgen oder grundsätzlich Spielstufen geändert werden in dem unter if event.type == MOUSEBUTTONDOWN... eine Alternative eingefügt wird
-
+"""
+Autor: Timo Just
+Strategy Pattern erstellt um die einzelnen Spielstufen/Ebenen zu erstellen, hier derzeit Startbildschirm,Namenseingabe, Heldenauswahl, Levelauswahl... geplant war, diese in das State Pattern zu übergeben. Leider gescheitert :(
+Dieses Pattern erstellt je nach Spielstufe das Verhalten, was passiert wenn auf Button X,Y gedrückt wird, inklusive Übergabe in die nächste Stufe. 
+Es können beliebig die Reihenfolgen oder grundsätzlich Spielstufen geändert werden in dem unter if event.type == MOUSEBUTTONDOWN... eine Alternative eingefügt wird
+"""
 import pygame
 from strategy_hintergrund_display import*
 from strategy_ausführen import*
@@ -64,7 +65,6 @@ class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
                             spielername = spielername[:-1]
                         elif event.key == pygame.K_RETURN:
                             eingabe_aktiv = False
-                            return spielername
                         else:
                             spielername += event.unicode
                 #Hier die Farbänderung, wenn Button geklickt(und somit eingabe_aktiv wahr), dann Rand des Eingabefensters blau, wenn nicht oder außerhalb, dann schwarz
@@ -134,11 +134,14 @@ class Spielstufe:
     def spielstufe_ausführen(self):
         self.sla.ausführen(self)
 
+#Hier Instanziierung
 spielstufe_Startbildschirm = Spielstufe(Spielstufe_Startbildschirm)
 spielstufe_Namenseingabe = Spielstufe(Spielstufe_Namenseingabe)
 spielstufe_Heldenauswahl = Spielstufe(Spielstufe_Heldenauswahl)
 spielstufe_Levelauswahl = Spielstufe(Spielstufe_Levelauswahl)
 #spielstufe_Spielende_Scoreboard = Spielstufe(Spielende_Scoreboard)
+
+#Hier Methodenaufrufe von .spielstufe_ausführen() über die erstellten Instanzen 
 #Hier kann Spiel aufgerufen werden wenn Raute entfernt bei #spielstufe_Startbildschirm.spielstufe_ausführen() zum testen
 spielstufe_Startbildschirm.spielstufe_ausführen()
 #spielstufe_Namenseingabe.spielstufe_ausführen()

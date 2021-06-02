@@ -1,6 +1,9 @@
-#Autor: Timo Just
-#In diesem Pattern geht es ausschließlich um die Optik, Schrift und Position der Buttons
-#Es können beliebig per copy and paste entweder neue Helden- und/oder neue Levelbuttons hinzugefügt werden
+"""Autor: Timo Just
+In diesem Pattern geht es ausschließlich um die Optik, Schrift und Position der Buttons
+Es können beliebig per copy and paste entweder neue Helden- und/oder neue Levelbuttons hinzugefügt werden.
+Die ganz unten erstellten Instanzen werden flexibel in den strategy_hintergrund_display Klassen genutzt, um auf dem Hintergrund die Buttons darzustellen. 
+"""
+
 import pygame
 from settings import *
 
@@ -64,14 +67,13 @@ class Jack_Daniels_Button(IDisplay_Button_Behavior):
         text_position = (780,180)
         screen.blit(text,text_position)
 
-#hier noch beschreibung 
 class Button:
     def __init__(self, sbd: IDisplay_Button_Behavior):
         self.auswählen = sbd
     def button_anzeigen(self):
         self.auswählen.display(self)
 
-#hier noch beschreibung
+#Hier Instanziierung
 pennybutton = Button(Penny_Button)
 kneipebutton = Button(Kneipe_Button)
 bahnhofbutton = Button(Bahnhof_Button)
