@@ -321,3 +321,9 @@ while running:
     # Display
     pygame.display.flip()
 pygame.quit()
+
+
+#todo:
+#Anzeige anzahl öffner 
+#wenn anzahl 0 dann geht nichts mehr nur noch nachladen
+#verschiedene sounds bei verschiedenen getränken
