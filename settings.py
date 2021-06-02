@@ -1,7 +1,7 @@
 import pygame
 # Settings
-WIDTH = 1250 # 1280
-HEIGHT = 938#720
+WIDTH = 1280
+HEIGHT = 720
 FPS = 60
 WEISS = (255, 255, 255)
 SCHWARZ = (0, 0, 0)
