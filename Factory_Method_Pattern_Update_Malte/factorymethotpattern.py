@@ -304,7 +304,6 @@ while running:
 
 
     #Prüfen auf Kollision 
-    #Test Kommentar GitHub
     if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
         for sprite in sprite_list:
          if sprite.getraenk_rect.collidepoint(event.pos):  #event.pos = Maus Position beim klick
@@ -315,7 +314,9 @@ while running:
             beer_plop.play()
             print(sprite)
             sprite_list.remove(sprite)
-            
+            if remainingTriesCount_value == 0:
+                print("Öffner verbraucht bitte nachladen")        
+                
 
     # Display
     pygame.display.flip()
