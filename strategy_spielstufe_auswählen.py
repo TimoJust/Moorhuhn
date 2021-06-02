@@ -17,7 +17,8 @@ class Spielstufe_Startbildschirm(ISpielstufe_Behavior):
     def ausführen(self):
         """Schleife Startbildschirm: Besteht aus Hintergrund, Koordinaten des Buttons der Start-Schrift
            sowie der if-Anweisung für die Bedingung beim Klicken auf den Button"""
-        while True:
+        running = True
+        while running:
             #Import des Hintergrundbildes aus strategy_hintergrund_display
             startseite.hintergrund_anzeigen()
             #Position der Schrift "Start" als erstelltes Dreieck
@@ -30,7 +31,8 @@ class Spielstufe_Startbildschirm(ISpielstufe_Behavior):
                 #Hier wird das Verhalten erstellt: Was passiert wenn Mausklick und gleichzeitig Mausposition in erstelltem Rechteck
                 if event.type == MOUSEBUTTONDOWN and button_start.collidepoint(event.pos):
                     #Dann Wechsel zur nächsten bzw. gewünschten Spielstufe. Hier können die unten folgenden Strategys beliebig gegeneinander ausgetauscht werden.
-                    spielstufe_Namenseingabe.spielstufe_ausführen()
+                    #spielstufe_Namenseingabe.spielstufe_ausführen()
+                    running = False
 #Namenseingabe
 class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
     def ausführen(self):
@@ -43,7 +45,8 @@ class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
         farbe_eingabe_passiv = pygame.Color(SCHWARZ)
         farbe_eingabe_button = farbe_eingabe_passiv
         eingabe_aktiv = False
-        while True:
+        running = True
+        while running:
             namenseingabe.hintergrund_anzeigen()
             #Hier wird das Rechteck erzeugt, in dem der Name eingegeben werden kann
             pygame.draw.rect(screen,farbe_eingabe_button,eingabe_button,5)
@@ -75,7 +78,8 @@ class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
                 #Ab hier wieder die Koordinaten des Buttons "weiter", um bei "Kollision" in die nächste Spielstufe überzugehen
                 button_weiter = pygame.Rect(390,600, 380, 80)
                 if event.type == MOUSEBUTTONDOWN and button_weiter.collidepoint(event.pos):
-                    spielstufe_Heldenauswahl.spielstufe_ausführen()
+                    #spielstufe_Heldenauswahl.spielstufe_ausführen()
+                    running = False
             text_eingabe = schrift_namenseingabe.render(spielername,True,SCHWARZ)
             screen.blit(text_eingabe,(eingabe_button.x+7.5,eingabe_button.y+2.5))
             eingabe_button.w = max(150,text_eingabe.get_width()+10)
@@ -83,7 +87,8 @@ class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
 #Heldenauswahl
 class Spielstufe_Heldenauswahl(ISpielstufe_Behavior):
     def ausführen(self):
-        while True:
+        running = True
+        while running:
             startseite_Heldenauswahl.hintergrund_anzeigen()
             button_held_1 = pygame.Rect(192.5, 232.5, 255, 255)
             button_held_2 = pygame.Rect(832.5, 232.5, 255, 255)
@@ -92,7 +97,8 @@ class Spielstufe_Heldenauswahl(ISpielstufe_Behavior):
                     pygame.quit()
                     sys.exit()    
                 if event.type == MOUSEBUTTONDOWN and (button_held_1.collidepoint(event.pos) or button_held_2.collidepoint(event.pos)):
-                    spielstufe_Levelauswahl.spielstufe_ausführen()   
+                    #spielstufe_Levelauswahl.spielstufe_ausführen()
+                    running = False   
 #Levelauswahl
 class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
     def ausführen(self):
@@ -106,9 +112,10 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     pygame.quit()
                     sys.exit()
                 if event.type == MOUSEBUTTONDOWN and button_level_1.collidepoint(event.pos):
-                    while True:
+                    #
+                        
                         penny.hintergrund_anzeigen()
-                        programm_schließen.button_ausführen()
+                        #programm_schließen.button_ausführen()
                         #hier für Maurice falls ich state nicht hinbekomme
                         #nach Counter -> Übergabe per spielstufe_Spielende_Scoreboard.spielstufe_ausführen() an class Spielende_Scoreboard
                 if event.type == MOUSEBUTTONDOWN and button_level_2.collidepoint(event.pos):
@@ -143,7 +150,7 @@ spielstufe_Levelauswahl = Spielstufe(Spielstufe_Levelauswahl)
 
 #Hier Methodenaufrufe von .spielstufe_ausführen() über die erstellten Instanzen 
 #Hier kann Spiel aufgerufen werden wenn Raute entfernt bei #spielstufe_Startbildschirm.spielstufe_ausführen() zum testen
-spielstufe_Startbildschirm.spielstufe_ausführen()
+#spielstufe_Startbildschirm.spielstufe_ausführen()
 #spielstufe_Namenseingabe.spielstufe_ausführen()
 #spielstufe_Heldenauswahl.spielstufe_ausführen()
 #spielstufe_Levelauswahl.spielstufe_ausführen()
