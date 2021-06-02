@@ -27,11 +27,23 @@ textY=50
 timeX=WIDTH-50
 timeY=50
 
+
+#Remaining Tries display init
+remainingTriesCount_value = 5
+remainingTriesCountX = WIDTH - (WIDTH/2 - 110)
+remainingTriesCountY = 52
+remainingTriesText_value = 'Anzahl Öffner:'
+remainingTriesTextX = WIDTH - (WIDTH/2 + 150)
+remainingTriesTextY = 50
+
+
+
 # Hier Grafiken einbinden
 game_folder = os.path.dirname(__file__)
 
+
 #Sounds einbinden
-beer_plop = pygame.mixer.music.load(os.path.join(game_folder, "Flensburger_Plop.wav"))
+beer_plop = pygame.mixer.Sound(os.path.join(game_folder, "Flensburger_Plop.wav"))
 
 
 
@@ -53,16 +65,27 @@ cola = image_dict["cola"]
 cola_klein = pygame.transform.scale(cola, (75,75))
 cola_gross = pygame.transform.scale(cola, (100,100))
 
-#Scorboard Funktion 
+#Scoreboard Funktion 
 def scoreboard():
     scoreboard_score=font.render(str(score_value),True,WEISS)
     screen.blit(scoreboard_score,[textX, textY])
     scoreboard_time=font.render(str(time_value),True,WEISS)
     screen.blit(scoreboard_time,[timeX, timeY])
 
+
+
+#Remaining Tries display
+def remainingTries():
+    remainingTries_count=font.render(str(remainingTriesCount_value),True,WEISS)
+    screen.blit(remainingTries_count,[remainingTriesCountX, remainingTriesCountY])
+    remainingTries_text=font.render(str(remainingTriesText_value),True,WEISS)
+    screen.blit(remainingTries_text,[remainingTriesTextX, remainingTriesTextY])
+
+
 def redrawGameWindow():    
     screen.blit(bg,(0,0))
     scoreboard()
+    remainingTries()
     
 
 #Creator
@@ -287,10 +310,12 @@ while running:
          if sprite.getraenk_rect.collidepoint(event.pos):  #event.pos = Maus Position beim klick
             print("Treffer")
             score_value +=5
-            pygame.mixer.music.play(0)
+            remainingTriesCount_value -=1
+            #pygame.mixer.music.play(0)
+            beer_plop.play()
+            print(sprite)
             sprite_list.remove(sprite)
-   
-
+            
 
     # Display
     pygame.display.flip()
