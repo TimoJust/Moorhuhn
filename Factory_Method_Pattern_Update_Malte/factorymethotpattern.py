@@ -43,7 +43,8 @@ game_folder = os.path.dirname(__file__)
 
 
 #Sounds einbinden
-beer_plop = pygame.mixer.Sound(os.path.join(game_folder, "Flensburger_Plop.wav"))
+flensburger_beer_plop = pygame.mixer.Sound(os.path.join(game_folder, "Flensburger_Plop.wav"))
+water_sound = pygame.mixer.Sound(os.path.join(game_folder, "Wasser_zischen.wav"))
 
 
 
@@ -311,7 +312,10 @@ while running:
             score_value +=5
             remainingTriesCount_value -=1
             #pygame.mixer.music.play(0)
-            beer_plop.play()
+            if type(sprite) == Bier:
+                flensburger_beer_plop.play()
+            elif type(sprite) == Cola: 
+                water_sound.play()
             print(sprite)
             sprite_list.remove(sprite)
             if remainingTriesCount_value == 0:
