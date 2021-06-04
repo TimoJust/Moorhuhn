@@ -58,6 +58,8 @@ class Startseite_Optik(IDisplay_Hintergrund_Behavior):
         spielstart = font.render("Spiel starten", True, (0, 0, 0))
         spielstart_position = (400,600)
         screen.blit(spielstart,spielstart_position)
+        einhorn = pygame.image.load("einhorn.png")
+        screen.blit(einhorn,(200,480))
         pygame.display.update()
 
 #Hintergrund_Namen_eingeben
@@ -117,6 +119,20 @@ class Bahnhof_Optik(IDisplay_Hintergrund_Behavior):
         screen.blit(bahnhof,position)
         pygame.display.update()
 
+#Hintergrund Spielende
+class Spielende_Hintergrund (IDisplay_Hintergrund_Behavior):
+    def display(self):
+        screen.fill(SLATEGRAY_3)
+        nochmal_spielen_button.button_anzeigen()
+        nicht_weiter_spielen.button_anzeigen()
+        bart = pygame.image.load("bart.png")
+        screen.blit(bart,(750,600))
+        smile = pygame.image.load("drunk-emoji.png")
+        screen.blit(smile,(1125,25))
+        rick = pygame.image.load("rick.png")
+        screen.blit(rick,(180,143))
+        pygame.display.update()
+
 class Hintergrund:
     def __init__(self, sha: IDisplay_Hintergrund_Behavior):
         self.auswählen = sha
@@ -131,4 +147,14 @@ startseite = Hintergrund (Startseite_Optik)
 startseite_Levelauswahl = Hintergrund(Startseite_Levelauswahl_Optik)
 startseite_Heldenauswahl = Hintergrund(Startseite_Heldenauswahl_Optik)
 namenseingabe = Hintergrund(Namenseingabe_Hintergrund)
+spielende = Hintergrund(Spielende_Hintergrund)
+
+#penny.hintergrund_anzeigen()
+#kneipe.hintergrund_anzeigen()
+#bahnhof.hintergrund_anzeigen()
+#startseite.hintergrund_anzeigen()
+#startseite.hintergrund_anzeigen()
+#startseite.hintergrund_anzeigen()
+#namenseingabe.hintergrund_anzeigen()
+#spielende.hintergrund_anzeigen()
 

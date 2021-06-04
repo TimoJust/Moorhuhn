@@ -67,6 +67,28 @@ class Jack_Daniels_Button(IDisplay_Button_Behavior):
         text_position = (780,180)
         screen.blit(text,text_position)
 
+#Spielende
+class Button_nochmal_spielen(IDisplay_Button_Behavior):
+    def display(self):
+        button = pygame.Rect(380, 200, 450, 100)
+        pygame.draw.rect(screen,SCHWARZ,button)
+        font = pygame.font.SysFont("comicsansms", 40)
+        text = font.render("Nochmal büdde!", True, WEISS)
+        text_position = (400,220)
+        screen.blit(text,text_position)
+        pygame.display.update()
+
+class Button_genug_ist_genug(IDisplay_Button_Behavior):
+    def display(self):
+        button = pygame.Rect(380, 600, 450, 100)
+        pygame.draw.rect(screen,SCHWARZ,button)
+        font = pygame.font.SysFont("comicsansms", 40)
+        text = font.render("Ich kann nicht mehr!", True, WEISS)
+        text_position = (400,620)
+        screen.blit(text,text_position)
+        pygame.display.update()
+
+
 class Button:
     def __init__(self, sbd: IDisplay_Button_Behavior):
         self.auswählen = sbd
@@ -79,6 +101,8 @@ kneipebutton = Button(Kneipe_Button)
 bahnhofbutton = Button(Bahnhof_Button)
 mariabutton = Button(Maria_Cron_Button)
 jackbutton = Button(Jack_Daniels_Button)
+nochmal_spielen_button = Button (Button_nochmal_spielen)
+nicht_weiter_spielen = Button(Button_genug_ist_genug)
 
 #Über diese Methodenaufrufe Zugriff auf einzelne Buttons
 #pennybutton.button_anzeigen()
@@ -86,3 +110,5 @@ jackbutton = Button(Jack_Daniels_Button)
 #bahnhofbutton.button_anzeigen()
 #mariabutton.button_anzeigen()
 #jackbutton.button_anzeigen()
+#nochmal_spielen_button.button_anzeigen()
+#nicht_weiter_spielen.button_anzeigen()
