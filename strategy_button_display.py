@@ -80,11 +80,11 @@ class Button_nochmal_spielen(IDisplay_Button_Behavior):
 
 class Button_genug_ist_genug(IDisplay_Button_Behavior):
     def display(self):
-        button = pygame.Rect(380, 600, 450, 100)
+        button = pygame.Rect(380, 400, 450, 100)
         pygame.draw.rect(screen,SCHWARZ,button)
         font = pygame.font.SysFont("comicsansms", 40)
         text = font.render("Ich kann nicht mehr!", True, WEISS)
-        text_position = (400,620)
+        text_position = (400,420)
         screen.blit(text,text_position)
         pygame.display.update()
 

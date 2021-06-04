@@ -126,7 +126,7 @@ class Spielende_Hintergrund (IDisplay_Hintergrund_Behavior):
         nochmal_spielen_button.button_anzeigen()
         nicht_weiter_spielen.button_anzeigen()
         bart = pygame.image.load("bart.png")
-        screen.blit(bart,(750,600))
+        screen.blit(bart,(750,400))
         smile = pygame.image.load("drunk-emoji.png")
         screen.blit(smile,(1125,25))
         rick = pygame.image.load("rick.png")
