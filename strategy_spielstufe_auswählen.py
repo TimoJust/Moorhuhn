@@ -135,7 +135,7 @@ class Spielende(ISpielstufe_Behavior):
     def ausführen(self):
         spielende.hintergrund_anzeigen()
         button_nochmal_spielen = pygame.Rect(380, 200, 450, 100)
-        button_beenden = pygame.Rect(380, 600, 450, 100)
+        button_beenden = pygame.Rect(380, 400, 450, 100)
         running = True
         while running:
             for event in pygame.event.get():
