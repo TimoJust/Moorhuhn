@@ -1,0 +1,83 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>414</x><y>148</y><w>200</w><h>100</h></coordinates><panel_attributes>(Creator)
+IGetraenkCreator
+
+--
+makeGetraenk()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>184</x><y>378</y><w>200</w><h>100</h></coordinates><panel_attributes>(Concrete Creator)
+PennyFactory
+
+--
+makeGetraenk()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1504</x><y>103</y><w>190</w><h>130</h></coordinates><panel_attributes>(Product)
+Getraenk
+
+--
+__init__()
+update()
+render()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>904</x><y>383</y><w>170</w><h>100</h></coordinates><panel_attributes>(Concrete Product)
+Bier
+--
+__init__()
+update()
+render()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1094</x><y>383</y><w>170</w><h>100</h></coordinates><panel_attributes>(Concrete Product)
+Jaegermeister
+--
+__init__()
+update()
+render()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1934</x><y>373</y><w>170</w><h>100</h></coordinates><panel_attributes>(Concrete Product)
+Bierdose
+--
+__init__()
+update()
+render()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>274</x><y>238</y><w>210</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>190;10;190;90;10;90;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>234</x><y>468</y><w>2010</w><h>370</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1990;10;1990;350;10;350;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>468</y><w>1740</w><h>310</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1720;10;1720;290;10;290;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>664</x><y>468</y><w>760</w><h>160</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>740;10;740;140;10;140;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1514</x><y>376</y><w>170</w><h>100</h></coordinates><panel_attributes>(Concrete Product)
+Limo
+--
+__init__()
+update()
+render()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1734</x><y>376</y><w>170</w><h>100</h></coordinates><panel_attributes>(Concrete Product)
+Bierflasche
+--
+__init__()
+update()
+render()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2124</x><y>376</y><w>170</w><h>100</h></coordinates><panel_attributes>(Concrete Product)
+Wasserflasche
+--
+__init__()
+update()
+render()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1314</x><y>376</y><w>170</w><h>100</h></coordinates><panel_attributes>(Concrete Product)
+Cafe
+--
+__init__()
+update()
+render()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>454</x><y>468</y><w>1380</w><h>260</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1360;10;1360;240;10;240;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>404</x><y>383</y><w>210</w><h>100</h></coordinates><panel_attributes>(Concrete Creator)
+BahnhofFactory
+
+--
+makeGetraenk()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>634</x><y>383</y><w>210</w><h>100</h></coordinates><panel_attributes>(Concrete Creator)
+KneipeFactory
+
+--
+makeGetraenk()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>238</y><w>30</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>554</x><y>238</y><w>200</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90;180;90;180;150</additional_attributes></element><element><id>Relation</id><coordinates><x>514</x><y>468</y><w>1100</w><h>210</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1080;10;1080;190;10;190;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>734</x><y>478</y><w>470</w><h>110</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>450;10;450;90;10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>478</y><w>230</w><h>70</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>210;10;210;50;10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>974</x><y>228</y><w>580</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>560;10;560;70;10;70;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1164</x><y>228</y><w>410</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>390;10;390;90;10;90;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1384</x><y>228</y><w>210</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>190;10;190;110;10;110;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1594</x><y>228</y><w>30</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1624</x><y>228</y><w>220</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110;200;110;200;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1644</x><y>228</y><w>400</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90;380;90;380;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1664</x><y>228</y><w>580</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70;560;70;560;150</additional_attributes></element><element><id>UMLClass</id><coordinates><x>31</x><y>29</y><w>210</w><h>80</h></coordinates><panel_attributes>Client
+--
+__init__(factory):
+
+factory.makeGetraenk()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>104</x><y>98</y><w>330</w><h>130</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;startet&gt;&gt;</panel_attributes><additional_attributes>310;110;10;110;10;10</additional_attributes></element></diagram>
