@@ -6,8 +6,15 @@ Die Strategys werden dann in den Hauptteil übergeben. Es kann beliebig die Reih
 """
 import pygame
 import sys
-from pygame.locals import *
+import os
+import random
+import time
+from factory import*
+from settings import*
+from hs import*
+from pygame.locals import*
 from strategy_hintergrund_display import*
+
 #from strategy_button_position import* -> hier hätte ich gerne [x, y = pygame.mouse.get_pos(); pygame.Rect(...) und .collidepoint(x, y) eingespart) -> funktioniert leider nicht :( ]
 
 class ISpielstufe_Behavior:
@@ -120,7 +127,8 @@ class Spielstufe_Heldenauswahl(ISpielstufe_Behavior):
 #Levelauswahl
 class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
     def ausführen(self):
-        while True:      
+        running = True
+        while running:      
             startseite_Levelauswahl.hintergrund_anzeigen()
             button_level_1 = pygame.Rect(192.5, 232.5, 255, 255)
             button_level_2 = pygame.Rect(512.5, 232.5, 255, 255)
@@ -187,7 +195,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     #GameLoop Level Penny
                     running = True
                     #Anzeige Levelerklärung
-                    draw_text('Penny-Level\n\nZiel:\nTrink so viel Alkohol wie möglich!\n\nZeit:  60 Sekunden\n\nBierdose =   +20 Punkte\n\nWasserflasche =   -20 Punkte')
+                    draw_text('Penny-Level\n\nZiel:\nTrink so viel Alkohol wie möglich!\n\nZeit:  60 Sekunden\n\nBierdose =   +20 Punkte\n\nWasserflasche =   -200 Punkte')
                     time.sleep(5)
                     while running:
                         # Game Loop
@@ -206,11 +214,11 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                                 #Wenn Zeit <1 Spielende mit Highscore Übertragung und Anzeige-> Spielabbruch
                                 if time_value<1:
                                     draw_text("Das war´s " +player+"\n\n "+str(score_value)+" Punkte erreicht!")
-                                    time.sleep(5)
+                                    time.sleep(1)
                                     highscore_pennyHinzufügen(player,score_value)
                                     hs_pennyEintragen(p, top_n=3)
                                     highscore_pennyAnzeigen()
-                                    time.sleep(5)
+                                    time.sleep(1)
                                     running= False
                             if event.type == pygame.QUIT:
                                 running = False
@@ -248,12 +256,12 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                                     if type(sprite)==Bierdose or type(sprite)==Bierflasche or type(sprite)==Bier:
                                         score_value+=20
                                     if type(sprite)==Limo or type(sprite)==Cafe or type(sprite)==Wasserflasche:
-                                        score_value-=20
+                                        score_value-=200
                                     sprite_list.remove(sprite)
                             frame = 0
                         # Display
                         pygame.display.flip()
-                    pygame.quit()
+                    pygame.mixer.music.stop()
                 # Bahnhof
                 """
                 Im Level Bahnhof muss man möglichst viele Punkte sammeln!
@@ -318,11 +326,11 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                                 counter-=1
                                 if time_value<1:
                                     draw_text("Das war´s " +player+"\n\n "+str(score_value)+" Punkte erreicht!")
-                                    time.sleep(5)
+                                    time.sleep(1)
                                     highscore_bhfHinzufügen(player,score_value)
                                     hs_bhfEintragen(b, top_n=3)
                                     highscore_bhfAnzeigen()
-                                    time.sleep(5)
+                                    time.sleep(1)
                                     running= False
                             if event.type == pygame.QUIT:
                                 running = False
@@ -364,7 +372,8 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                                     sprite_list.remove(sprite)
                         # Display
                         pygame.display.flip()
-                    pygame.quit()
+                    pygame.mixer.music.stop()
+                    
                 #Kneipe
                 """
                 Im Level Kneipe muss man sich möglichst schnell betrinken!
@@ -436,11 +445,11 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                                 counter-=1
                                 if score_value<0:
                                     draw_text("Das war´s " +player+"\n\nDu hast "+str(time_value)+" Sekunden Gebraucht um dich zu betrinken!\n\n\n\nHerzlichen Glückwunsch! ")
-                                    time.sleep(5)
+                                    time.sleep(1)
                                     highscore_kneipeHinzufügen(player,time_value)
                                     hs_kneipeEintragen(k, top_n=3)
                                     highscore_kneipeAnzeigen()
-                                    time.sleep(5)
+                                    time.sleep(1)
                                     running= False
                             if event.type == pygame.QUIT:
                                 running = False
@@ -486,12 +495,12 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                             frame = 0
                         # Display
                         pygame.display.flip()
-                    pygame.quit()
-
+                    pygame.mixer.music.stop()
 
 #Spielendbildschirm
 class Spielende(ISpielstufe_Behavior):
     def ausführen(self):
+        pygame.mouse.set_visible(True)
         spielende.hintergrund_anzeigen()
         button_nochmal_spielen = pygame.Rect(380, 200, 450, 100)
         button_beenden = pygame.Rect(380, 400, 450, 100)
