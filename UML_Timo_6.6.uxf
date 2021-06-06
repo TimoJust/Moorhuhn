@@ -118,7 +118,7 @@ m1=0..n</panel_attributes><additional_attributes>10;10;280;30;640;280;1120;220;1
 m1=0..n</panel_attributes><additional_attributes>10;30;50;90;330;80;700;320;1280;260;1300;10</additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>1090</y><w>780</w><h>280</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes><additional_attributes>10;40;270;260;760;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>1090</y><w>1020</w><h>180</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes><additional_attributes>10;60;30;160;1000;10</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>950</y><w>1640</w><h>490</h></coordinates><panel_attributes>lt=&lt;-
-m1=0..n</panel_attributes><additional_attributes>10;100;120;440;1620;470;1590;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1830</x><y>880</y><w>230</w><h>80</h></coordinates><panel_attributes>Startseite_Levelauswahl_Optik
+m1=0..n</panel_attributes><additional_attributes>10;100;120;440;1620;470;1590;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1830</x><y>880</y><w>230</w><h>80</h></coordinates><panel_attributes>Spielende_Hintergrund
 [StrategyE]
 -
 -
