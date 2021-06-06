@@ -1,6 +1,6 @@
 """Autor: Timo Just
 In diesem Pattern geht es ausschließlich um die Optik, Schrift und Position der Buttons
-Es können beliebig per copy and paste entweder neue Helden- und/oder neue Levelbuttons hinzugefügt werden.
+Es können beliebig neue Helden- und/oder neue Levelbuttons hinzugefügt werden.
 Die ganz unten erstellten Instanzen werden flexibel in den strategy_hintergrund_display Klassen genutzt, um auf dem Hintergrund die Buttons darzustellen. 
 """
 
@@ -10,6 +10,11 @@ from settings import *
 class IDisplay_Button_Behavior:
     def display(self):
         raise NotImplementedError
+class Button:
+    def __init__(self, sbd: IDisplay_Button_Behavior):
+        self.auswählen = sbd
+    def button_anzeigen(self):
+        self.auswählen.display(self)
 
 #Bilder der Buttons für die Level
 class Penny_Button(IDisplay_Button_Behavior):
@@ -79,7 +84,6 @@ class Button_nochmal_spielen(IDisplay_Button_Behavior):
         text_position = (400,220)
         screen.blit(text,text_position)
         pygame.display.update()
-
 class Button_genug_ist_genug(IDisplay_Button_Behavior):
     def display(self):
         button = pygame.Rect(380, 400, 450, 100)
@@ -91,13 +95,6 @@ class Button_genug_ist_genug(IDisplay_Button_Behavior):
         text_position = (400,420)
         screen.blit(text,text_position)
         pygame.display.update()
-
-
-class Button:
-    def __init__(self, sbd: IDisplay_Button_Behavior):
-        self.auswählen = sbd
-    def button_anzeigen(self):
-        self.auswählen.display(self)
 
 #Hier Instanziierung
 pennybutton = Button(Penny_Button)

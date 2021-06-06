@@ -2,7 +2,7 @@
 Autor: Timo Just
 Strategy Pattern erstellt um die einzelnen Spielstufen/Ebenen zu erstellen, hier derzeit Startbildschirm,Namenseingabe, Heldenauswahl, Levelauswahl...
 Dieses Pattern erstellt je nach Spielstufe das Verhalten, was passiert wenn auf Button X,Y gedrückt wird
-Die Strategys werden dann in den hauptteil übergeben. Es kann beliebig die Reihenfolgen oder grundsätzlich Spielstufe geändert werden. Jederzeit erweiterar und von außen aufrufbar.
+Die Strategys werden dann in den Hauptteil übergeben. Es kann beliebig die Reihenfolgen oder grundsätzlich Spielstufe geändert werden. Jederzeit erweiterar und von außen aufrufbar.
 """
 import pygame
 import sys
@@ -13,6 +13,11 @@ from strategy_hintergrund_display import*
 class ISpielstufe_Behavior:
     def ausführen(self):
         raise NotImplementedError
+class Spielstufe:
+    def __init__(self, sla: ISpielstufe_Behavior):
+        self.sla = sla
+    def spielstufe_ausführen(self):
+        self.sla.ausführen(self)
 
 #Startbildschirm
 class Spielstufe_Startbildschirm(ISpielstufe_Behavior):
@@ -23,7 +28,7 @@ class Spielstufe_Startbildschirm(ISpielstufe_Behavior):
         while running:
             #Import des Hintergrundbildes aus strategy_hintergrund_display
             startseite.hintergrund_anzeigen()
-            #Position der Schrift "Start" als erstelltes Dreieck
+            #Position der Schrift "Start" als erstelltes Rechteck
             button_start = pygame.Rect(390,620, 380, 80)
             for event in pygame.event.get():
                 #Möglichkeit das Spiel zu beenden über x
@@ -51,14 +56,15 @@ class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
         #spielername = Gamer
         spielername = ""
         eingabe_button = pygame.Rect(390,342.5,140,50)
-        #Farbe des Rechtecks, zur Spielernamen Eingabe wenn angeklickt
+        #Farbe des Rechtecks, zur Spielernamen Eingabe, wenn angeklickt
         farbe_eingabe_aktiv = pygame.Color(BLAU)
-        ##Farbe des Rechtecks, zur Spielernamen Eingabe, wenn außerhalb des Rechtecks angeklickt
+        #Farbe des Rechtecks, zur Spielernamen Eingabe, wenn außerhalb des Rechtecks angeklickt
         farbe_eingabe_passiv = pygame.Color(SCHWARZ)
         farbe_eingabe_button = farbe_eingabe_passiv
         eingabe_aktiv = False
         running = True
         while running:
+            #Hier wieder: Import des Hintergrundbildes aus strategy_hintergrund_display
             namenseingabe.hintergrund_anzeigen()
             #Hier wird das Rechteck erzeugt, in dem der Name eingegeben werden kann
             pygame.draw.rect(screen,farbe_eingabe_button,eingabe_button,5)
@@ -73,7 +79,7 @@ class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
                     else:
                         eingabe_aktiv = False
                 if event.type == pygame.KEYDOWN:
-                    #Wenn Eingabe wahr, siehe Zeile 53, dann per Backspace möglich die eingebenen Buchstaben zu löschen(Zeile 63) oder per Enter aus der Eingabe auszusteigen oder per Zeile 69 eingebene Buchstaben darzustellen.
+                    #Wenn Eingabe wahr, dann per Backspace möglich die eingebenen Buchstaben zu löschen oder per Enter aus der Eingabe auszusteigen oder eingebene Buchstaben darzustellen.
                     if eingabe_aktiv == True:
                         if event.key == pygame.K_BACKSPACE:
                             spielername = spielername[:-1]
@@ -95,6 +101,7 @@ class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
             eingabe_button.w = max(150,text_eingabe.get_width()+10)
             pygame.display.update()
 #print (spielername)
+
 #Heldenauswahl
 class Spielstufe_Heldenauswahl(ISpielstufe_Behavior):
     def ausführen(self):
@@ -108,8 +115,8 @@ class Spielstufe_Heldenauswahl(ISpielstufe_Behavior):
                     pygame.quit()
                     sys.exit()    
                 if event.type == MOUSEBUTTONDOWN and (button_held_1.collidepoint(event.pos) or button_held_2.collidepoint(event.pos)):
-                    #spielstufe_Levelauswahl.spielstufe_ausführen()
                     running = False   
+
 #Levelauswahl
 class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
     def ausführen(self):
@@ -151,12 +158,6 @@ class Spielende(ISpielstufe_Behavior):
                 if event.type == MOUSEBUTTONDOWN and button_beenden.collidepoint(event.pos):
                         pygame.quit()
                         sys.exit()
-
-class Spielstufe:
-    def __init__(self, sla: ISpielstufe_Behavior):
-        self.sla = sla
-    def spielstufe_ausführen(self):
-        self.sla.ausführen(self)
 
 #Hier Instanziierung
 spielstufe_Startbildschirm = Spielstufe(Spielstufe_Startbildschirm)
