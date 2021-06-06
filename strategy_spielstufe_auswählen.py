@@ -15,7 +15,6 @@ from hs import*
 from pygame.locals import*
 from strategy_hintergrund_display import*
 from Musik2 import*
-
 #from strategy_button_position import* -> hier hätte ich gerne [x, y = pygame.mouse.get_pos(); pygame.Rect(...) und .collidepoint(x, y) eingespart) -> funktioniert leider nicht :( ]
 
 class ISpielstufe_Behavior:
@@ -48,13 +47,6 @@ class Spielstufe_Startbildschirm(ISpielstufe_Behavior):
                 if event.type == MOUSEBUTTONDOWN and button_start.collidepoint(event.pos):
                     #jetzt Abbruch, damit im Hauptteil die nächste Stufe übergeben werden kann
                     running = False
-
-#Klasse erstellt um den eingebenen Namen per Return zurück zu bekommen -> Übergabe an Highscore
-"""class Gamer:
-    def __init__(self):
-        self.spielername = None
-
-        return"""
 
 #Namenseingabe
 class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
@@ -494,6 +486,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                         pygame.display.flip()
                     pygame.mixer.music.stop()
 
+#Ab hier wieder Timo Just
 #Spielendbildschirm
 class Spielende(ISpielstufe_Behavior):
     def ausführen(self):
