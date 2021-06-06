@@ -1,6 +1,6 @@
 """Autor: Timo Just
 In diesem Pattern geht es ausschließlich um die Optik, Schrift und Position der Buttons
-Es können beliebig per copy and paste entweder neue Helden- und/oder neue Levelbuttons hinzugefügt werden.
+Es können beliebig neue Helden- und/oder neue Levelbuttons hinzugefügt werden.
 Die ganz unten erstellten Instanzen werden flexibel in den strategy_hintergrund_display Klassen genutzt, um auf dem Hintergrund die Buttons darzustellen. 
 """
 
@@ -10,6 +10,11 @@ from settings import *
 class IDisplay_Button_Behavior:
     def display(self):
         raise NotImplementedError
+class Button:
+    def __init__(self, sbd: IDisplay_Button_Behavior):
+        self.auswählen = sbd
+    def button_anzeigen(self):
+        self.auswählen.display(self)
 
 #Bilder der Buttons für die Level
 class Penny_Button(IDisplay_Button_Behavior):
@@ -67,11 +72,29 @@ class Jack_Daniels_Button(IDisplay_Button_Behavior):
         text_position = (780,180)
         screen.blit(text,text_position)
 
-class Button:
-    def __init__(self, sbd: IDisplay_Button_Behavior):
-        self.auswählen = sbd
-    def button_anzeigen(self):
-        self.auswählen.display(self)
+#Spielende
+class Button_nochmal_spielen(IDisplay_Button_Behavior):
+    def display(self):
+        button = pygame.Rect(380, 200, 450, 100)
+        pygame.draw.rect(screen,SCHWARZ,button)
+        button_rand = pygame.Rect(380, 200, 450, 100)
+        pygame.draw.rect(screen,BLAU,button_rand,10)
+        font = pygame.font.SysFont("comicsansms", 40)
+        text = font.render("Nochmal büdde!", True, WEISS)
+        text_position = (400,220)
+        screen.blit(text,text_position)
+        pygame.display.update()
+class Button_genug_ist_genug(IDisplay_Button_Behavior):
+    def display(self):
+        button = pygame.Rect(380, 400, 450, 100)
+        pygame.draw.rect(screen,SCHWARZ,button)
+        button_rand = pygame.Rect(380, 400, 450, 100)
+        pygame.draw.rect(screen,BLAU,button_rand,10)
+        font = pygame.font.SysFont("comicsansms", 40)
+        text = font.render("Ich kann nicht mehr!", True, WEISS)
+        text_position = (400,420)
+        screen.blit(text,text_position)
+        pygame.display.update()
 
 #Hier Instanziierung
 pennybutton = Button(Penny_Button)
@@ -79,6 +102,8 @@ kneipebutton = Button(Kneipe_Button)
 bahnhofbutton = Button(Bahnhof_Button)
 mariabutton = Button(Maria_Cron_Button)
 jackbutton = Button(Jack_Daniels_Button)
+nochmal_spielen_button = Button (Button_nochmal_spielen)
+nicht_weiter_spielen = Button(Button_genug_ist_genug)
 
 #Über diese Methodenaufrufe Zugriff auf einzelne Buttons
 #pennybutton.button_anzeigen()
@@ -86,3 +111,5 @@ jackbutton = Button(Jack_Daniels_Button)
 #bahnhofbutton.button_anzeigen()
 #mariabutton.button_anzeigen()
 #jackbutton.button_anzeigen()
+#nochmal_spielen_button.button_anzeigen()
+#nicht_weiter_spielen.button_anzeigen()
