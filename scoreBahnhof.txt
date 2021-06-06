@@ -1,2 +1,3 @@
 Merle:140
-Maurice:0
+Timo:120
+Sven:100

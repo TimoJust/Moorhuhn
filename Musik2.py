@@ -7,33 +7,38 @@ pygame.mixer.init()
 #pygame.mixer.music.play()
 
 class Musik:
-     def play():
+     def play(self):
          raise NotADirectoryError
 
 class StartbildschirmMusik(Musik):
      def play(self):
          pygame.mixer.music.load('Startmusik.ogg')
          pygame.mixer.music.play()
+         pygame.mixer.music.set_volume(0.4)
 
 class Level1Musik(Musik):
      def play(self):
          pygame.mixer.music.load('Level1.ogg')
          pygame.mixer.music.play()
+         pygame.mixer.music.set_volume(0.1)
 
 class Level2Musik(Musik):
      def play(self):
          pygame.mixer.music.load('Level2.ogg')
          pygame.mixer.music.play()
+         pygame.mixer.music.set_volume(0.1)
 
 class Level3Musik(Musik):
      def play(self):
          pygame.mixer.music.load('Level2.ogg')
          pygame.mixer.music.play()
+         pygame.mixer.music.set_volume(0.1)
 
 class Hintergrundmusik(Musik):
      def play(self):
          pygame.mixer.music.load('hintergrundmusik.ogg')
          pygame.mixer.music.play()
+         pygame.mixer.music.set_volume(0.4)
 
 
 class Ausgabe:
@@ -41,7 +46,7 @@ class Ausgabe:
          self.abspielen = sp
 
      def spiele(self):
-         self.abspielen.play()
+         self.abspielen.play(self)
 
 
 
@@ -49,57 +54,52 @@ class Ausgabe:
 
 # Startbildschirm
 
-meinMusikStartbildschirm = StartbildschirmMusik()
-meineausgabe=Ausgabe(meinMusikStartbildschirm)
-meinMusikStartbildschirm.play()
+meinMusikStartbildschirm = Ausgabe(StartbildschirmMusik)
+#meinMusikStartbildschirm.spiele()
+
 
 #level1
 
-level1meinMusikStartbildschirm = Level1Musik()
-level1meineausgabe=Ausgabe(level1meinMusikStartbildschirm)
-level1meinMusikStartbildschirm.play()
+level1meinMusikStartbildschirm = Ausgabe(Level1Musik)
+#level1meinMusikStartbildschirm.spiele()
 
 #level2
 
-level2meinMusikStartbildschirm = Level2Musik()
-level2meineausgabe=Ausgabe(level1meinMusikStartbildschirm)
-level2meinMusikStartbildschirm.play()
+level2meinMusikStartbildschirm = Ausgabe(Level2Musik)
+#level2meinMusikStartbildschirm.spiele()
 
 #level3
 
-level3meinMusikStartbildschirm = Level3Musik()
-level3meineausgabe=Ausgabe(level1meinMusikStartbildschirm)
-level3meinMusikStartbildschirm.play()
+level3meinMusikStartbildschirm = Ausgabe(Level3Musik)
+#level3meinMusikStartbildschirm.spiele()
 
 # Endbildschirm/ Hintergrundmusik
-hintergrundmusikmeinMusikStartbildschirm = Hintergrundmusik()
-hintergrundmusikmeineausgabe=Ausgabe(hintergrundmusikmeinMusikStartbildschirm)
-hintergrundmusikmeinMusikStartbildschirm.play()
-
+hintergrundmusikmeinMusikStartbildschirm = Ausgabe(Hintergrundmusik)
+#hintergrundmusikmeinMusikStartbildschirm.spiele()
 
 
 clock = pygame.time.Clock()
 
 #Farbe
-black = (0,0,0)
+#black = (0,0,0)
 
 #Fenster
-width = 20
-heigh = 20
-size = (width, heigh)
-win = pygame.display.set_mode(size)
+#width = 20
+#heigh = 20
+#size = (width, heigh)
+#win = pygame.display.set_mode(size)
 
 
 
 # game loop
 
-while True:
-     for event in pygame.event.get():
-         if event.type == pygame.QUIT:
-             pygame.quit()
-             sys.exit()
+#while True:
+     #for event in pygame.event.get():
+         #if event.type == pygame.QUIT:
+             #pygame.quit()
+             #sys.exit()
 
 
 
-     pygame.display.flip()
-     clock.tick(60)
+     #pygame.display.flip()
+#clock.tick(60)

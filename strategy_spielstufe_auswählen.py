@@ -14,6 +14,7 @@ from settings import*
 from hs import*
 from pygame.locals import*
 from strategy_hintergrund_display import*
+from Musik2 import*
 
 #from strategy_button_position import* -> hier hätte ich gerne [x, y = pygame.mouse.get_pos(); pygame.Rect(...) und .collidepoint(x, y) eingespart) -> funktioniert leider nicht :( ]
 
@@ -29,6 +30,7 @@ class Spielstufe:
 #Startbildschirm
 class Spielstufe_Startbildschirm(ISpielstufe_Behavior):
     def ausführen(self):
+        meinMusikStartbildschirm.spiele()
         """Schleife Startbildschirm: Besteht aus Hintergrund, Koordinaten des Buttons der Start-Schrift
            sowie der if-Anweisung für die Bedingung beim Klicken auf den Button"""
         running = True
@@ -58,9 +60,7 @@ class Spielstufe_Startbildschirm(ISpielstufe_Behavior):
 class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
     def ausführen(self):
         schrift_namenseingabe = pygame.font.SysFont("comicsansms", 35)
-        #spielername = Spielername
-        #global spielername
-        #spielername = Gamer
+        global spielername
         spielername = ""
         eingabe_button = pygame.Rect(390,342.5,140,50)
         #Farbe des Rechtecks, zur Spielernamen Eingabe, wenn angeklickt
@@ -122,7 +122,7 @@ class Spielstufe_Heldenauswahl(ISpielstufe_Behavior):
                     pygame.quit()
                     sys.exit()    
                 if event.type == MOUSEBUTTONDOWN and (button_held_1.collidepoint(event.pos) or button_held_2.collidepoint(event.pos)):
-                    running = False   
+                    running = False 
 
 #Levelauswahl
 class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
@@ -141,7 +141,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                 Autor: Maurice Berger
                 Nach der Levelauswahl wird das jeweilige Level gestartet...
                 """
-                player="Maurice"
+                player= spielername
                 # Penny
                 """
                 Im Level Penny muss man möglichst viele Punkte in 60 Sekunden erreichen!
@@ -151,14 +151,14 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                 Anschließend werden die Punkte angezeigt und die Top 3 Spieler des Penny-Highscore-Dictionaries ausgegegben
                 -> Ende
                 """
+                pygame.mixer.music.stop()  
                 if event.type == MOUSEBUTTONDOWN and button_level_1.collidepoint(event.pos):   
                     # Initialisierung Penny
                     # Initialisierung
                     pygame.init()
                     #Musik von Sven
-                    pygame.mixer.init()
-                    pygame.mixer.music.load('Startmusik.ogg')
-                    pygame.mixer.music.play()
+                    level1meinMusikStartbildschirm.spiele()
+                    
                     screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
                     pygame.display.set_caption("Dionysos")
@@ -278,9 +278,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     pygame.init()
 
                      #Musik von Sven
-                    pygame.mixer.init()
-                    pygame.mixer.music.load('bahnhof.mp3')
-                    pygame.mixer.music.play()
+                    level2meinMusikStartbildschirm.spiele()
 
                     screen = pygame.display.set_mode((WIDTH, HEIGHT))
                     pygame.display.set_caption("Dionysos - Bahnhof")
@@ -389,9 +387,8 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     pygame.init()
                     
                      #Musik von Sven
-                    pygame.mixer.init()
-                    pygame.mixer.music.load('kneipe.mp3')
-                    pygame.mixer.music.play()
+                    level3meinMusikStartbildschirm.spiele()
+
                     screen = pygame.display.set_mode((WIDTH, HEIGHT))
                     pygame.display.set_caption("Dionysos")
                     clock = pygame.time.Clock()
