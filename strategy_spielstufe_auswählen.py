@@ -17,6 +17,14 @@ from strategy_hintergrund_display import*
 from Musik2 import*
 #from strategy_button_position import* -> hier hätte ich gerne [x, y = pygame.mouse.get_pos(); pygame.Rect(...) und .collidepoint(x, y) eingespart) -> funktioniert leider nicht :( ]
 
+
+#Malte Sound-Effekte einbinden
+flensburger_beer_plop = pygame.mixer.Sound("Flensburger_Plop.wav")
+water_sound = pygame.mixer.Sound("Wasser_zischen.wav")
+pygame.mixer.Sound.set_volume(flensburger_beer_plop, 0.5)
+pygame.mixer.Sound.set_volume(water_sound, 0.5)
+
+
 class ISpielstufe_Behavior:
     def ausführen(self):
         raise NotImplementedError
@@ -157,7 +165,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     clock = pygame.time.Clock()
                     pygame.time.set_timer(pygame.USEREVENT, 1000)
                     pygame.mouse.set_visible(False)
-                    #
+                    
                     frame=0
                     frame_b=0
                     score_value=0
@@ -238,17 +246,20 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                         x,y=pygame.mouse.get_pos()
                         screen.blit(hand[0],(x-20,y-20))
 
+                        #Malte
                         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                             #Geschlossene_Hand Rendern
                             screen.blit(hand[1],(x-20,y-20))
                             for sprite in sprite_list:
                                 #Wenn Sprite getroffen +- Punkte zum Score zählen und Sprite entfernen
                                 if sprite.getraenk_rect.collidepoint(event.pos):  #event.pos = Maus Position beim klick
-                                    print("Treffer")                              
+                                    #print("Treffer")                              
                                     if type(sprite)==Bierdose or type(sprite)==Bierflasche or type(sprite)==Bier:
                                         score_value+=20
+                                        flensburger_beer_plop.play()
                                     if type(sprite)==Limo or type(sprite)==Cafe or type(sprite)==Wasserflasche:
                                         score_value-=200
+                                        water_sound.play()
                                     sprite_list.remove(sprite)
                             frame = 0
                         # Display
@@ -472,7 +483,6 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                             for sprite in sprite_list:
                                 if sprite.getraenk_rect.collidepoint(event.pos):  #event.pos = Maus Position beim klick
                                     print("Treffer")
-                                
                                 
                                     if type(sprite)==Bierdose or type(sprite)==Bierflasche or type(sprite)==Bier:
                                         score_value-=20
