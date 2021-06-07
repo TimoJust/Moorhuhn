@@ -149,9 +149,11 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                 # Penny
                 """
                 Im Level Penny muss man möglichst viele Punkte in 60 Sekunden erreichen!
-                Hierbei gibt es für Bierdosen(+20Pkt) und Wasserflaschen(-200Pkt)
-                Diese werden alle X Sekunden auf zufälliger Höhe und Seite in 3 verschiedenen Größen gespawnt
-                Diese Sprites werden in der PennyFactory instanziert und erstellt
+                Sprites:        -Bierdose        +20 Punkte
+                                -Wasserflasche  -200 Punkte
+                Diese werden alle X Sekunden auf zufälliger Höhe und Seite mit zufälliger Geschwindigkeit in 3 verschiedenen Größen gespawnt
+                Diese Sprites werden durch das mehrfache starten der PennyFactory erstellt   
+                10x Spawn bei: 7, 35, 60, 55, 50, 40, 30, 25, 20, 10 Sekunden
                 Anschließend werden die Punkte angezeigt und die Top 3 Spieler des Penny-Highscore-Dictionaries ausgegegben
                 -> Ende
                 """
@@ -173,7 +175,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     frame_b=0
                     score_value=0
                     counter=0     
-                    time_value=60
+                    time_value=66
 
                     #Scorboard Funktion 
                     def scoreboard():
@@ -271,10 +273,11 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                 # Bahnhof
                 """
                 Im Level Bahnhof muss man möglichst viele Punkte sammeln!
-                Man spielt gegen die Zeit startet mit 10
-                Hierbei gibt es Bierflaschen(+1sek/+20Pkt) und Limo(-5sek.)
-                Diese werden alle X Sekunden auf zufälliger Höhe und Seite gespawnt
-                Diese Sprites werden in der BahnhofFactory instanziert und erstellt
+                Man spielt gegen die Zeit startet mit 10 Sekunden
+                Sprites:        -Bierflasche        + Zeit
+                                -Wasserflasche    --- Zeit
+                Diese werden alle 10 Sekunden auf zufälliger Höhe und Seite mit zufälliger Geschwindigkeit gespawnt
+                Diese Sprites werden durch das mehrfache starten der BahnhofFactory erstellt  
                 Anschließend werden die Punkte angezeigt und die Top 3 Spieler des Bahnhof-Highscore-Dictionaries ausgegegben
                 -> Ende
                 """
@@ -385,8 +388,10 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                 """
                 Im Level Kneipe muss man sich möglichst schnell betrinken!
                 Die zeit wird gestoppt
-                Hierbei gibt es Bier(+Betrunkenheit), Jägermeister(+++Betrunkenheit)  und Cafe(-Betrunkenheit)
-                Diese werden alle X Sekunden auf zufälliger Höhe und Seite gespawnt
+                Sprites:        -Bier                 + Betrunkenheit
+                                -Jägermeister       +++ Betrunkenheit
+                                -Cafe                 - Betrunkenheit
+                Diese werden alle 10 Sekunden auf zufälliger Höhe und Seite gespawnt
                 Diese Sprites werden in der KneipeFactory instanziert und erstellt
                 Anschließend die Zeit angezeigt und die Top 3 schnellsten Spieler des Kneipe-Highscore-Dictionaries ausgegegben
                 -> Ende
