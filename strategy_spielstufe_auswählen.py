@@ -21,8 +21,12 @@ from Musik2 import*
 #Malte Sound-Effekte einbinden
 flensburger_beer_plop = pygame.mixer.Sound("Flensburger_Plop.wav")
 water_sound = pygame.mixer.Sound("Wasser_zischen.wav")
+jaegermeister_sound = pygame.mixer.Sound("Jaegermeister_sound.mp3")
+laugh_sound = pygame.mixer.Sound("laugh_sound.wav")
 pygame.mixer.Sound.set_volume(flensburger_beer_plop, 0.5)
 pygame.mixer.Sound.set_volume(water_sound, 0.5)
+pygame.mixer.Sound.set_volume(jaegermeister_sound, 0.5)
+pygame.mixer.Sound.set_volume(laugh_sound, 0.5)
 
 
 class ISpielstufe_Behavior:
@@ -229,7 +233,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                             if sprite.x >= -30 and sprite.x <= WIDTH+30:
                                 sprite.update()
                             else:
-                                print("Sprite entfernt")
+                                #print("Sprite entfernt")
                                 #ansonsten Sprite entfernen
                                 sprite_list.remove(sprite)
                                 #Und neuen Sprite Spawnen
@@ -246,7 +250,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                         x,y=pygame.mouse.get_pos()
                         screen.blit(hand[0],(x-20,y-20))
 
-                        #Malte
+                        #Malte Sprite Kollisionserkennung
                         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                             #Geschlossene_Hand Rendern
                             screen.blit(hand[1],(x-20,y-20))
@@ -343,7 +347,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                             if sprite.x >= -30 and sprite.x <= WIDTH+30:
                                 sprite.update()
                             else:
-                                print("Sprite entfernt")
+                                #print("Sprite entfernt")
                                 #ansonsten Sprite entfernen
                                 sprite_list.remove(sprite)
                                 Client(BahnnhofFactory())
@@ -358,18 +362,20 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                         x,y=pygame.mouse.get_pos()
                         screen.blit(hand[0],(x-20,y-20))
 
+                        #Malte Sprite Kollisionserkennung
                         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                             #Geschlossene_Hand Rendern
                             screen.blit(hand[1],(x-20,y-20))
                             for sprite in sprite_list:
                                 if sprite.getraenk_rect.collidepoint(event.pos):  #event.pos = Maus Position beim klick
-                                    print("Treffer")
-                                           
+                                    #print("Treffer")
                                     if type(sprite)==Bierflasche:
                                         time_value+=1
                                         score_value+=20
+                                        flensburger_beer_plop.play()
                                     if type(sprite)==Limo:
                                         time_value-=5
+                                        water_sound.play()
                                     sprite_list.remove(sprite)
                         # Display
                         pygame.display.flip()
@@ -426,7 +432,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                         scoreboard()
                         Leberwert(screen,0,HEIGHT-46,score_value,1)
 
-                    draw_text('Kneipe-Level\n\nZiel: Betrinke dich so schnell wie möglich!\n\n-> Bekämpfe deine Nüchternheit und ertränke den Balken in Alkohol\n\n\n\nBier= Wirksamkeit +\n\nJägermeister= Wirksamkeit +++\n\nCafe= Wirksamkeit -')
+                    draw_text('Kneipe-Level\n\nZiel: Betrinke dich so schnell wie möglich!\n\n-> Bekämpfe deine Nüchternheit und ertränke den Balken in Alkohol\n\n\n\nBier = Wirksamkeit +\n\nJägermeister = Wirksamkeit +++\n\nKaffee = Wirksamkeit -')
                     time.sleep(5)                    
                     running = True
                     while running:
@@ -461,7 +467,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                             if sprite.x >= -30 and sprite.x <= WIDTH+30:
                                 sprite.update()
                             else:
-                                print("Sprite entfernt")
+                                #print("Sprite entfernt")
                                 #ansonsten Sprite entfernen
                                 sprite_list.remove(sprite)
                                 Client(KneipeFactory())
@@ -477,24 +483,28 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                         x,y=pygame.mouse.get_pos()
                         screen.blit(hand[0],(x-20,y-20))
 
+                        #Malte Sprite Kollisionserkennung
                         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                             #Geschlossene_Hand Rendern
                             screen.blit(hand[1],(x-20,y-20))
                             for sprite in sprite_list:
                                 if sprite.getraenk_rect.collidepoint(event.pos):  #event.pos = Maus Position beim klick
-                                    print("Treffer")
-                                
+                                    #print("Treffer")
                                     if type(sprite)==Bierdose or type(sprite)==Bierflasche or type(sprite)==Bier:
                                         score_value-=20
+                                        flensburger_beer_plop.play()
                                     if type(sprite)==Limo or type(sprite)==Cafe or type(sprite)==Wasserflasche:
                                         score_value+=20
+                                        laugh_sound.play()
                                     if type(sprite)==Jaegermeister:
                                         score_value-=50
+                                        jaegermeister_sound.play()
                                     sprite_list.remove(sprite)
                             frame = 0
                         # Display
                         pygame.display.flip()
                     pygame.mixer.music.stop()
+
 
 #Ab hier wieder Timo Just
 #Spielendbildschirm
