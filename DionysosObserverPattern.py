@@ -1,4 +1,20 @@
 """
+
+ACHTUNG: NICHT IM SPIEL IMPLEMENTIERT 
+
+Dieses Pattern konnte aus Zeitmangel nicht mehr eingebaut werden.
+Vor Abgabe haben wir uns als Team entschieden es nicht mehr einzubauen
+und uns lieber auf ein funktionierendes Spiel zu fokussieren.
+
+Da ich das Pettern gebaut hatte möchte ich es als Fleißbeleg für meine Mitwirkung mit abgeben.
+
+Viele Grüße
+Sven Radzabov
+
+"""
+
+
+"""
 Observer Pattern für Dionysos, dient der Übergabe 
 von Achivments und Punkten.
 Autor: Sven Radzabov
@@ -140,7 +156,7 @@ Nachfolgend angelegte Spieler und  Registrierte Spieler zum Testen
 Beim Mergen auskommentieren.
 
 """
-
+# Einstellung vom Mergeversuch am 06.06.2021, da noch zusätzliche Spielerklasse gebaut werden muss und eine Ausgabe nach mehrern Versuchen nicht klappt. 
 
 achchivmentdatenbank = AchievmentDatenbank()
 
