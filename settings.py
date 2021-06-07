@@ -1,5 +1,6 @@
 import pygame
 # Settings
+pygame.display.set_caption("Dionysos - Mo(o)r(e)alk - Genug getrunken, ab jetzt wird gesoffen!")
 WIDTH = 1280# 1250 # 
 HEIGHT = 720#938#
 FPS = 60

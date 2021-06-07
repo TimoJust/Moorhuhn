@@ -1,3 +1,8 @@
+"""
+Autoren: Malte, Maurice, Sven, Timo
+Spiel kann hier gestartet werden :)
+"""
+
 from strategy_spielstufe_auswählen import*
 
 spielstufe_Startbildschirm.spielstufe_ausführen()

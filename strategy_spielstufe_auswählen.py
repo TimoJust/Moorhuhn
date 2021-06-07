@@ -1,6 +1,6 @@
 """
 Autor: Timo Just
-Strategy Pattern erstellt um die einzelnen Spielstufen/Ebenen zu erstellen, hier derzeit Startbildschirm,Namenseingabe, Heldenauswahl, Levelauswahl...
+Strategy Pattern erstellt um die einzelnen Spielstufen/Ebenen zu erstellen, hier derzeit Startbildschirm,Namenseingabe, Heldenauswahl, Levelauswahl und Endbildschirm
 Dieses Pattern erstellt je nach Spielstufe das Verhalten, was passiert wenn auf Button X,Y gedrückt wird
 Die Strategys werden dann in den Hauptteil übergeben. Es kann beliebig die Reihenfolgen oder grundsätzlich Spielstufe geändert werden. Jederzeit erweiterar und von außen aufrufbar.
 """
@@ -15,7 +15,6 @@ from hs import*
 from pygame.locals import*
 from strategy_hintergrund_display import*
 from Musik2 import*
-#from strategy_button_position import* -> hier hätte ich gerne [x, y = pygame.mouse.get_pos(); pygame.Rect(...) und .collidepoint(x, y) eingespart) -> funktioniert leider nicht :( ]
 
 
 #Malte Sound-Effekte einbinden
@@ -38,7 +37,7 @@ class Spielstufe:
     def spielstufe_ausführen(self):
         self.sla.ausführen(self)
 
-#Startbildschirm
+#Startbildschirm von Timo
 class Spielstufe_Startbildschirm(ISpielstufe_Behavior):
     def ausführen(self):
         meinMusikStartbildschirm.spiele()
@@ -60,7 +59,7 @@ class Spielstufe_Startbildschirm(ISpielstufe_Behavior):
                     #jetzt Abbruch, damit im Hauptteil die nächste Stufe übergeben werden kann
                     running = False
 
-#Namenseingabe
+#Namenseingabe von Timo
 class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
     def ausführen(self):
         schrift_namenseingabe = pygame.font.SysFont("comicsansms", 35)
@@ -113,7 +112,7 @@ class Spielstufe_Namenseingabe(ISpielstufe_Behavior):
             pygame.display.update()
 #print (spielername)
 
-#Heldenauswahl
+#Heldenauswahl von Timo
 class Spielstufe_Heldenauswahl(ISpielstufe_Behavior):
     def ausführen(self):
         running = True
@@ -510,9 +509,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                         pygame.display.flip()
                     pygame.mixer.music.stop()
 
-
-#Ab hier wieder Timo Just
-#Spielendbildschirm
+#Spielendbildschirm von Timo
 class Spielende(ISpielstufe_Behavior):
     def ausführen(self):
         pygame.mouse.set_visible(True)
