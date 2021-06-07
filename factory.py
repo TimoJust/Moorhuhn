@@ -1,3 +1,14 @@
+"""
+
+Autor: Maurice Berger
+
+Der Client startet über die Factory Methode (makeGetraenk) aus dem Creator(IGetraenkCreator) die gewünschte Factory, 
+die wiederum das gewünschten ConcreteProducts(Bier,Limo,...) aus der Elternklasse Product(Getraenk) mit den Levelgebundenen 
+Parametern(Größe/Schnelligkeit/Seite...) erstellt.
+
+"""
+
+
 import pygame
 import os
 import random
@@ -12,7 +23,7 @@ health_bar_width=1
 sprite_list = [] 
 
 
-# Hier Grafiken einbinden
+# Grafiken 
 game_folder = os.path.dirname(__file__)
 image_dict = {}
 hand = ['','']
@@ -25,7 +36,7 @@ image_dict["wasserflasche"]= pygame.image.load(os.path.join(game_folder, "wasser
 image_dict["bierdose"]= pygame.image.load(os.path.join(game_folder, "bierdose.png"))
 image_dict["limo"]= pygame.image.load(os.path.join(game_folder, "limo.png"))
 image_dict["cafe"]= pygame.image.load(os.path.join(game_folder, "cafe.png"))
-image_dict["bierflasche"]= pygame.image.load(os.path.join(game_folder, "bierflasche.png"))
+image_dict["bierflasche"]= pygame.image.load(os.path.join(game_folder, "bierflasche1.png"))
 image_dict["handauf"]= pygame.image.load(os.path.join(game_folder, "hand2.png"))
 image_dict["score"]= pygame.image.load(os.path.join(game_folder, "cockpit.png"))
 image_dict["scorebhf"]= pygame.image.load(os.path.join(game_folder, "cockpitbhf2.png"))
@@ -34,9 +45,6 @@ image_dict["kneipe"]= pygame.image.load(os.path.join(game_folder, "kneipe.jpg"))
 image_dict["penny"]= pygame.image.load(os.path.join(game_folder, "penny.jpg"))
 image_dict["bahnhof"]= pygame.image.load(os.path.join(game_folder, "bahnhof.jpg"))
 image_dict["tafel"]= pygame.image.load(os.path.join(game_folder, "tafel.png"))
-
-
-
 
 bg=image_dict["kneipe"]
 bg1=image_dict["bahnhof"]
@@ -62,7 +70,7 @@ cafe_klein = image_dict["cafe"]
 cafe_klein= pygame.transform.scale(cafe_klein, (100,100))
 
 
-
+# Funktion die "text" auf dem Screen ausgibt
 def draw_text(text):
     screen.blit(bg2, (50, 50))
     font = pygame.font.SysFont("arial", 25)
@@ -89,58 +97,53 @@ class Getraenk:
         self.image = image
         self.getraenk_rect = image.get_rect()
         
-    
+    #Bewegung der Sprites 
     def update(self):
         # Bewegung
         self.x = self.x + self.sx
-        self.y = self.y#self.y + self.sy# -> So nur horizontale bewegung
+        self.y = self.y                                # -> So nur horizontale bewegung
         self.getraenk_rect.center = (self.x, self.y)
 
-
+    #Rendern der Sprites
     def render(self, screen):
         screen.blit(self.image, self.getraenk_rect)
 
-    def starten(self):
-        raise NotImplementedError
-                
-
+#Penny
 #Product A
 class Bierdose(Getraenk):
-    def starten(self):
-        print("Bierdose Startet")
+    pass
 #Product B
 class Wasserflasche(Getraenk):
-    def starten(self):
-        print("Wasserflasche Startet")
+    pass
+#Kneipe
 #Product C
 class Bier(Getraenk):
-    def starten(self):
-        print("Bierflasche Startet")
+    pass
 #Product D
 class Cafe(Getraenk):
-    def starten(self):
-        print("Cafe Startet")
+    pass
 #Product E
 class Jaegermeister(Getraenk):
-    def starten(self):
-        print("Jaegermeister Startet")
+    pass
+#Bahnhof
 #Product F
 class Bierflasche(Getraenk):
-    def starten(self):
-        print("Bierflasche Startet")
+    pass
 #Product G
 class Limo(Getraenk):
-    def starten(self):
-        print("Limo Startet")
+    pass
+
 
 # Creator
 class IGetraenkFactory:
+    #Factory Methode
     def makeGetraenk(self): 
         raise NotImplementedError
 
 # Concrete Creator A
 #Level Penny Factory -> Randomgrößen  /  Randomseite  / 2Getränke  /  Verteilung  1/5_Wasserflaschen 4/5_Bierdose
 class PennyFactory(IGetraenkFactory):
+    #Factory Methode
     def makeGetraenk(self): 
         randomseite=random.randint(1,2)
         randomgetraenk=random.randint(1,5)
@@ -261,7 +264,7 @@ class BahnnhofFactory(IGetraenkFactory):
                     sprite_list.append(limo)
                     return Limo(WIDTH-50, random.randint(30, HEIGHT-120), random.randint(3,7)* -1, random.randint(3, 7)* -1, image_dict["limo"])
  
-#Client    
+#Client    -> Ruft die gewünschte Factory auf
 class Client:
     def __init__(self, factory):
         self.factory = factory
