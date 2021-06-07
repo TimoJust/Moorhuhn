@@ -149,7 +149,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                 # Penny
                 """
                 Im Level Penny muss man möglichst viele Punkte in 60 Sekunden erreichen!
-                Hierbei gibt es Bierdosen(+20Pkt) und Wasserflaschen(-20Pkt)
+                Hierbei gibt es für Bierdosen(+20Pkt) und Wasserflaschen(-200Pkt)
                 Diese werden alle X Sekunden auf zufälliger Höhe und Seite in 3 verschiedenen Größen gespawnt
                 Diese Sprites werden in der PennyFactory instanziert und erstellt
                 Anschließend werden die Punkte angezeigt und die Top 3 Spieler des Penny-Highscore-Dictionaries ausgegegben
@@ -157,14 +157,13 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                 """
                 pygame.mixer.music.stop()  
                 if event.type == MOUSEBUTTONDOWN and button_level_1.collidepoint(event.pos):   
+                    
                     # Initialisierung Penny
-                    # Initialisierung
                     pygame.init()
                     #Musik von Sven
                     level1meinMusikStartbildschirm.spiele()
                     
                     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-
                     pygame.display.set_caption("Dionysos")
                     clock = pygame.time.Clock()
                     pygame.time.set_timer(pygame.USEREVENT, 1000)
@@ -205,7 +204,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                         # Game Loop
                         clock.tick(FPS)
 
-                        # Did the user click the window close button?
+                        # Wurde ein Knopf gedrückt?
                         for event in pygame.event.get():
                             if event.type == pygame.USEREVENT: 
                                 #Zeit läuft ab -1sek
@@ -272,9 +271,9 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                 # Bahnhof
                 """
                 Im Level Bahnhof muss man möglichst viele Punkte sammeln!
-                Man spielt gegen die Zeit
+                Man spielt gegen die Zeit startet mit 10
                 Hierbei gibt es Bierflaschen(+1sek/+20Pkt) und Limo(-5sek.)
-                Diese werden alle X Sekunden auf zufälliger Höhe und Seite in 3 verschiedenen Größen gespawnt
+                Diese werden alle X Sekunden auf zufälliger Höhe und Seite gespawnt
                 Diese Sprites werden in der BahnhofFactory instanziert und erstellt
                 Anschließend werden die Punkte angezeigt und die Top 3 Spieler des Bahnhof-Highscore-Dictionaries ausgegegben
                 -> Ende
@@ -294,6 +293,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     pygame.mouse.set_visible(False)
                     #
                     counter=0
+                    #Start Zeit
                     time_value=14
                     score_value=0
                     #Scorboard Funktion 
@@ -319,7 +319,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                         # Game Loop
                         clock.tick(FPS)
 
-                        # Did the user click the window close button?
+                        # Wurde ein Knopf gedrückt?
                         for event in pygame.event.get():
                             if event.type == pygame.USEREVENT: 
                                 time_value -= 1           
@@ -386,7 +386,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                 Im Level Kneipe muss man sich möglichst schnell betrinken!
                 Die zeit wird gestoppt
                 Hierbei gibt es Bier(+Betrunkenheit), Jägermeister(+++Betrunkenheit)  und Cafe(-Betrunkenheit)
-                Diese werden alle X Sekunden auf zufälliger Höhe und Seite in 3 verschiedenen Größen gespawnt
+                Diese werden alle X Sekunden auf zufälliger Höhe und Seite gespawnt
                 Diese Sprites werden in der KneipeFactory instanziert und erstellt
                 Anschließend die Zeit angezeigt und die Top 3 schnellsten Spieler des Kneipe-Highscore-Dictionaries ausgegegben
                 -> Ende
