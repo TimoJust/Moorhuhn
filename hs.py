@@ -1,5 +1,10 @@
+"""
+Autor Maurice Berger
+Nicht die schönste oder eleganteste Lösung, aber wir brauchten noch einen Highscore =)
+"""
 from factory import *
 
+#Funktion lädt die Datei scoreBahnhof.txt und schreibt den Inhalt in das Dicionary hs
 def hs_bhf_Laden(fn = "./scoreBahnhof.txt"):
     #Aus Datei lesen
     hs = {}
@@ -12,7 +17,7 @@ def hs_bhf_Laden(fn = "./scoreBahnhof.txt"):
     except FileNotFoundError:
         return {}
     return hs
-
+#Funktion lädt die Datei scorePenny.txt und schreibt den Inhalt in das Dicionary hspenny
 def hs_penny_Laden(fn = "./scorePenny.txt"):
     #Aus Datei lesen
     hspenny = {}
@@ -25,7 +30,7 @@ def hs_penny_Laden(fn = "./scorePenny.txt"):
     except FileNotFoundError:
         return {}
     return hspenny
-
+#Funktion lädt die Datei scoreKneip.txt und schreibt den Inhalt in das Dicionary hskneipe
 def hs_kneipe_Laden(fn = "./scoreKneipe.txt"):
     #Aus Datei lesen
     hskneipe = {}
@@ -38,7 +43,7 @@ def hs_kneipe_Laden(fn = "./scoreKneipe.txt"):
     except FileNotFoundError:
         return {}
     return hskneipe
-
+#Funktion sortiert das Dictionary nach ihren Values absteigend
 def hs_bhfEintragen(dictionary, fn = "./scoreBahnhof.txt", top_n=0):
     #Dictionary in Textdatei mit top_n höchsten Werten 
     with open(fn,"w") as f:
@@ -46,7 +51,7 @@ def hs_bhfEintragen(dictionary, fn = "./scoreBahnhof.txt", top_n=0):
             f.write(f"{name}:{pts}\n")
             if top_n and index == top_n-1:
                 break
-            
+ #Funktion sortiert das Dictionary nach ihren Values aufsteigend           
 def hs_kneipeEintragen(dictionary, fn = "./scoreKneipe.txt", top_n=0):
     #Dictionary in Textdatei mit top_n höchsten Werten 
     with open(fn,"w") as f:
@@ -54,7 +59,7 @@ def hs_kneipeEintragen(dictionary, fn = "./scoreKneipe.txt", top_n=0):
             f.write(f"{name}:{pts}\n")
             if top_n and index == top_n+1:
                 break
-
+#Funktion sortiert das Dictionary nach ihren Values absteigend
 def hs_pennyEintragen(dictionary, fn = "./scorePenny.txt", top_n=0):
     #Dictionary in Textdatei mit top_n höchsten Werten 
     with open(fn,"w") as f:
@@ -62,26 +67,32 @@ def hs_pennyEintragen(dictionary, fn = "./scorePenny.txt", top_n=0):
             f.write(f"{name}:{pts}\n")
             if top_n and index == top_n-1:
                 break
-
+                
+#Fügt dem Dicionary hs neuen Score hinzu
 def highscore_bhfHinzufügen(name,score):
     b[name]=score
-
+    
+#Fügt dem Dicionary hskneipe neuen Score hinzu
 def highscore_kneipeHinzufügen(name,score):
     k[name]=score
-
+    
+#Fügt dem Dicionary hspenny neuen Score hinzu
 def highscore_pennyHinzufügen(name,score):
     p[name]=score
 
+#Zeigt mit draw_text Funktion top_n Ergebnisse(Bahnhof) an
 def highscore_bhfAnzeigen():
     bb = hs_bhf_Laden()
     draw_text(str(bb))
     time.sleep(3)
 
+#Zeigt mit draw_text Funktion top_n Ergebnisse(Penny)  an
 def highscore_pennyAnzeigen():
     pp = hs_penny_Laden()
     draw_text(str(pp))
     time.sleep(3)
 
+#Zeigt mit draw_text Funktion top_n Ergebnisse(Kneipe) an
 def highscore_kneipeAnzeigen():
     kk = hs_kneipe_Laden()
     draw_text(str(kk))
