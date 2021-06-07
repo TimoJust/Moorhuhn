@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 Timo:7900
 eri:1220
+=======
+Timo:5980
+Malte:720
+>>>>>>> 59dafd88b7f3fbe40c877f8a7906c2d7678d26d7
 Merle:140

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 Eri:1780
 Timo:1640
 eri:1440
+=======
+awdadw:820
+Malte:360
+Merle:140
+>>>>>>> 59dafd88b7f3fbe40c877f8a7906c2d7678d26d7
