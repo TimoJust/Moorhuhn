@@ -1,46 +1,67 @@
+""" 
+Klasse von zum Abspielen von Musik in den einzelnen Leveln.
+Autor: Sven Radzabov
+
+Idee: Anwendung vom Strategy Pattern.
+Unterschiedliche Implementierung der Methode play in jedem Level mit eigener Lautstärke 
+und einem eigenen Lied.
+
+ Formate müssen vom Typ "ogg" sein. 
+
+"""
+
+# Importe notwendiger Bibliotheken 
 import pygame
 import sys
 pygame.init()
 
 pygame.mixer.init()
+
+#zum Test ob Lieder abgespielt werden können
 #pygame.mixer.music.load('Startmusik.ogg')
 #pygame.mixer.music.play()
 
+# Interface: Jede Klasse die vom Interface erbt muss play() implementieren
 class Musik:
      def play(self):
          raise NotADirectoryError
-
+     
+# Musik für den Startbildschirm 
 class StartbildschirmMusik(Musik):
      def play(self):
-         pygame.mixer.music.load('Startmusik.ogg')
+         pygame.mixer.music.load('Startmusik.ogg') 
          pygame.mixer.music.play()
          pygame.mixer.music.set_volume(0.4)
 
+# Musik für Level1
 class Level1Musik(Musik):
      def play(self):
          pygame.mixer.music.load('Level1.ogg')
          pygame.mixer.music.play()
          pygame.mixer.music.set_volume(0.1)
-
+     
+# Musik für Level2
 class Level2Musik(Musik):
      def play(self):
          pygame.mixer.music.load('Level2.ogg')
          pygame.mixer.music.play()
          pygame.mixer.music.set_volume(0.1)
 
+# Musik für Level3
 class Level3Musik(Musik):
      def play(self):
          pygame.mixer.music.load('Level2.ogg')
          pygame.mixer.music.play()
          pygame.mixer.music.set_volume(0.1)
 
+# Musik für Level3
 class Hintergrundmusik(Musik):
      def play(self):
          pygame.mixer.music.load('hintergrundmusik.ogg')
          pygame.mixer.music.play()
          pygame.mixer.music.set_volume(0.4)
 
-
+# Initialisierung
 class Ausgabe:
      def __init__(self, sp: Musik):
          self.abspielen = sp
@@ -79,6 +100,8 @@ hintergrundmusikmeinMusikStartbildschirm = Ausgabe(Hintergrundmusik)
 
 
 clock = pygame.time.Clock()
+
+""" Zum Testen der Klasse vor dem Zusammenführen """
 
 #Farbe
 #black = (0,0,0)
