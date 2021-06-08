@@ -271,6 +271,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     pygame.mixer.music.stop()
                 # Bahnhof
                 """
+                Autor: Maurice Berger
                 Im Level Bahnhof muss man möglichst viele Punkte sammeln!
                 Man spielt gegen die Zeit startet mit 10 Sekunden
                 Sprites:        -Bierflasche        + Zeit
@@ -385,6 +386,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                     
                 #Kneipe
                 """
+                Autor: Maurice Berger
                 Im Level Kneipe muss man sich möglichst schnell betrinken!
                 Die zeit wird gestoppt
                 Sprites:        -Bier                 + Betrunkenheit
