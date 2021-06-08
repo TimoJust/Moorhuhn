@@ -2,8 +2,8 @@
 
 Autor: Maurice Berger
 
-Der Client startet über die Factory Methode (makeGetraenk) aus dem Creator(IGetraenkCreator) die gewünschte Factory, 
-die wiederum das gewünschten ConcreteProducts(Bier,Limo,...) aus der Elternklasse Product(Getraenk) mit den Levelgebundenen 
+Der Client startet über die Factory Methode (makeGetraenk) aus dem Creator(IGetraenkCreator) die gewünschte Factory(Concrete Creator A,B,C), 
+die wiederum die gewünschten ConcreteProducts(Bier,Limo,...) aus der Elternklasse Product(Getraenk) mit den Levelgebundenen 
 Parametern(Größe/Schnelligkeit/Seite...) erstellt.
 
 """
@@ -27,6 +27,8 @@ sprite_list = []
 game_folder = os.path.dirname(__file__)
 image_dict = {}
 hand = ['','']
+
+#Eigene Liste für die beiden möglichen Bilder der Spielerhand auf dem Bildschirm(auf/zu)
 hand[0] = pygame.image.load("handauf1.png")
 hand[1] = pygame.image.load("handzu1.png")
 
@@ -109,27 +111,27 @@ class Getraenk:
         screen.blit(self.image, self.getraenk_rect)
 
 #Penny
-#Product A
+#Concrete Product A
 class Bierdose(Getraenk):
     pass
-#Product B
+#Concrete Product B
 class Wasserflasche(Getraenk):
     pass
 #Kneipe
-#Product C
+#Concrete Product C
 class Bier(Getraenk):
     pass
-#Product D
+#Concrete Product D
 class Cafe(Getraenk):
     pass
-#Product E
+#Concrete Product E
 class Jaegermeister(Getraenk):
     pass
 #Bahnhof
-#Product F
+#Concrete Product F
 class Bierflasche(Getraenk):
     pass
-#Product G
+#Concrete Product G
 class Limo(Getraenk):
     pass
 
@@ -264,7 +266,7 @@ class BahnnhofFactory(IGetraenkFactory):
                     sprite_list.append(limo)
                     return Limo(WIDTH-50, random.randint(30, HEIGHT-120), random.randint(3,7)* -1, random.randint(3, 7)* -1, image_dict["limo"])
  
-#Client    -> Ruft die gewünschte Factory auf
+#Client    -> Ruft die gewünschte Factory über die Factory-Methode makeGetraenk() der abstrakten Creator-Klasse
 class Client:
     def __init__(self, factory):
         self.factory = factory
