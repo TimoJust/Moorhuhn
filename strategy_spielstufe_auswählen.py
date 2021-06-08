@@ -264,7 +264,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                                     if type(sprite)==Limo or type(sprite)==Cafe or type(sprite)==Wasserflasche:
                                         score_value-=200
                                         water_sound.play()
-                                    sprite_list.remove(sprite)
+                                    sprite_list.remove(sprite) #Wenn Sprite getroffen, dann aus sprite_list entfernen
                             frame = 0
                         # Display
                         pygame.display.flip()
@@ -378,7 +378,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                                     if type(sprite)==Limo:
                                         time_value-=5
                                         water_sound.play()
-                                    sprite_list.remove(sprite)
+                                    sprite_list.remove(sprite) #Wenn Sprite getroffen, dann aus sprite_list entfernen
                         # Display
                         pygame.display.flip()
                     pygame.mixer.music.stop()
@@ -503,7 +503,7 @@ class Spielstufe_Levelauswahl(ISpielstufe_Behavior):
                                     if type(sprite)==Jaegermeister:
                                         score_value-=50
                                         jaegermeister_sound.play()
-                                    sprite_list.remove(sprite)
+                                    sprite_list.remove(sprite) #Wenn Sprite getroffen, dann aus sprite_list entfernen
                             frame = 0
                         # Display
                         pygame.display.flip()

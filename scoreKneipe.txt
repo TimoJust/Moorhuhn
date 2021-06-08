@@ -1,8 +1,5 @@
 Timo:20
+Malte:28
 Maurice:30
-<<<<<<< HEAD
 eri:37
-=======
-Malte:37
->>>>>>> 59dafd88b7f3fbe40c877f8a7906c2d7678d26d7
 Merle:38
